@@ -1,0 +1,1 @@
+export const IMAGEURL = "https://images.cricspin.live/"
