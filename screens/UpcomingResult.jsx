@@ -94,14 +94,10 @@ export const UpcomingResults = ({ route, navigation }) => {
 
                         <Text className='text-center mb-1 euclidMedium mt-4'>Match Hasn't Started Yet</Text>
                         <Text className='text-center px-2 text-sm  euclid mb-4'>We'll be live once the toss begins... Stay Tuned!</Text>
-
                     </View>
-
-
                 </View>
             </>
         }
-
         </SafeAreaView>
 
     );

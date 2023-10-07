@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { PlayerXI } from './PlayerXI';
+import { MyContext } from '../ContextProvider';
 
-const Info = ({ match, matchId }) => {
+
+const Info = () => {
+    const { match, matchId } = useContext(MyContext)
+
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'transparent', padding: 10, height: "100%" }}>
             <Text style={{ padding: 10 }}>{match?.Result}</Text>
@@ -17,7 +21,9 @@ const Info = ({ match, matchId }) => {
                     <Text style={{ marginLeft: 10 }}>{match?.venue}</Text>
                 </View>
             )}
+
             <PlayerXI matchId={matchId} />
+
             {/* <BottomBanner /> */}
         </ScrollView>
     );

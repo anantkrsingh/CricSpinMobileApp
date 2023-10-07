@@ -6,10 +6,10 @@ const PlayerScoreCard = ({ player }) => {
   return (
     <View style={styles.row}>
       <View style={styles.cell}>
-        <Text className="text-black text-xl font-bold">{player.PlayerName}</Text>
+        <Text className="text-black font-bold">{player.PlayerName}</Text>
         <Text className="text-blue-800 font-bold" >{player.outby}</Text>
       </View>
-      <Text className="text-blue-800 text-xl font-bold" style={[styles.subcell, styles.textRight]}>{player.Runs}</Text>
+      <Text className="text-blue-800 font-bold" style={[styles.subcell, styles.textRight]}>{player.Runs}</Text>
       <Text style={[styles.subcell, styles.textRight]}>{player.Balls}</Text>
       <Text style={[styles.subcell, styles.textRight]}>{player.four}</Text>
       <Text style={[styles.subcell, styles.textRight]}>{player.six}</Text>
@@ -22,16 +22,16 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     borderBottomColor: 'gray',
     paddingVertical: 8,
-    paddingHorizontal:4
+    paddingHorizontal: 4
   },
   cell: {
     flex: 3,
     paddingHorizontal: 8,
   },
-  subcell:{
+  subcell: {
     flex: 1,
     paddingHorizontal: 4,
   },

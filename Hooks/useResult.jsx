@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { MyContext } from "../ContextProvider"
 
 
 const useResult = (params) => {
-    const [myMatch, setMatch] = useState()
-    const [upcomingMatches, setUpcomingMatches] = useState()
+    const { myMatch, setMatch } = useContext(MyContext)
     const [loading, setLoading] = useState(true)
-    const { matchId, seriesId } = params
+    const { matchId, seriesId } = useContext(MyContext)
     const [jsonData, setJsonData] = useState(null)
     const [CRR, setCRR] = useState("N/A")
     const [RRR, setRRR] = useState("N/A")
     const [animation, setAnimation] = useState("loadingLottie");
-    const [speed,setSpeed] = useState(1)
-
+    const [speed, setSpeed] = useState(1)
 
     const handleAnimation = (strf) => {
         let animationName;
@@ -114,16 +113,16 @@ const useResult = (params) => {
         fetchMatch()
         const interval = setInterval(() => {
             fetchMatch();
-        }, 500);
+        }, 1500);
         return () => {
             if (interval) {
                 clearInterval(interval);
             }
         };
-    }, [])
+    }, [params])
 
 
-    return { myMatch, loading, CRR, RRR, jsonData,animation,speed }
+    return { myMatch, loading, CRR, RRR, jsonData, animation, speed }
 }
 
 

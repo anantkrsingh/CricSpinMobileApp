@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View, Text, Image, Dimensions, TouchableOpacity } from 'react-native'
 import { IMAGEURL } from './CONST';
 import { TouchableWithoutFeedback } from 'react-native';
+import { MyContext } from '../ContextProvider';
 
 
 export const LiveMatch = ({ match, index, navigation }) => {
     const [jsonData, setJsonData] = useState()
+    const { setMatchId, setSeriesId } = useContext(MyContext)
     const currentDate = new Date();
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -112,13 +114,10 @@ export const LiveMatch = ({ match, index, navigation }) => {
     let intData = -1;
     if (comparisonResult < 0) {
         isLive = true;
-        // console.log("The target date and time is earlier than the current date and time");
     } else if (comparisonResult > 0) {
         isLive = false;
-        // console.log("The target date and time is later than the current date and time");
     } else {
         isLive = true;
-        // console.log("The target date and time is the same as the current date and time");
     }
 
 
@@ -147,7 +146,7 @@ export const LiveMatch = ({ match, index, navigation }) => {
 
         <TouchableOpacity
             key={index}
-            onPress={() => { navigation.navigate("Result", { matchId: `${match.MatchId}`, seriesId: `${match.seriesid}` }) }}
+            onPress={() => { setMatchId(match.MatchId); setSeriesId(match.seriesid); { navigation.navigate("Result") } }}
             style={{ width: width - 20, marginTop: 2, borderRadius: 20, backgroundColor: "white", display: "flex", margin: 2, overflow: "hidden", flexDirection: "column", marginBottom: 0 }}
         >
             <View style={{ display: "flex", justifyContent: "space-between", flexDirection: "row" }}  >

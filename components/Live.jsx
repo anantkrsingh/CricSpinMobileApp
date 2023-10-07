@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView,StyleSheet } from 'react-native'
+import React, { useEffect, useState,useContext } from "react";
+import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import RenderHtml from 'react-native-render-html';
 import { useWindowDimensions } from 'react-native';
+import { MyContext } from "../ContextProvider";
 
 
-export const Live = React.memo(({ matchID }) => {
+export const Live = () => {
+    const { matchId } = useContext(MyContext)
+    console.log(matchId,"From Live");
     const [match, setMatch] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -18,14 +21,14 @@ export const Live = React.memo(({ matchID }) => {
         }, 2000);
 
         return () => clearInterval(interval);
-    }, [matchID]);
+    }, [matchId]);
     const { width } = useWindowDimensions();
 
 
     const fetchData = async () => {
         try {
             const response = await fetch(
-                "https://api.cricspin.live/Live/?MatchId=" + matchID,
+                "https://api.cricspin.live/Live/?MatchId=" + matchId,
                 {
                     method: "POST",
                     headers: {
@@ -120,24 +123,31 @@ export const Live = React.memo(({ matchID }) => {
             </View>
             <View className="w-full flex mb-2 flex-col">
                 <View className="w-full p-2 mt-4 items-center euclid flex  flex-row justify-between bg-white rounded-md">
-                    <Text className="text-lg">Favourite</Text>
+                    <Text className="">Favourite</Text>
                     <View className="flex items-center font-bold flex-row">
                         <Text style={{ fontWeight: "bold" }}> {jsonRuns.fav}</Text>
-                        <Text className="px-2 text-xl py-1 mx-2 bg-red-100 text-red-800 rounded-lg">
-                            {jsonRuns.rateA}
-                        </Text>
-                        <Text className="px-2 py-1 text-xl bg-green-100  text-green-800 ">
-                            {jsonRuns.rateB}
-                        </Text>
+                        <View className=" mx-2 bg-red-100 rounded-lg">
+                            <Text className="text-red-800  px-2 text-xl py-1">
+                                {jsonRuns.rateA}
+                            </Text>
+                        </View>
+                        <View className=" mx-2 bg-green-100 rounded-lg">
+                            <Text className="text-green-800  px-2 text-xl py-1">
+                                {jsonRuns.rateB}
+                            </Text>
+                        </View>
                     </View>
                 </View>
                 <View className=" mb-2 euclid font-bold bg-white rounded-md mt-4 p-2 flex-row justify-between">
                     <View className="flex flex-col items-center">
                         <Text>Session </Text>
                         <View className="flex flex-row">
-                            <Text className="px-2 py-1 mx-2 text-xl bg-red-100 text-red-800 rounded-lg">
-                                {jsonRuns.sessionA}
-                            </Text>
+                            <View className="bg-red-100 rounded-lg mx-2">
+
+                                <Text className="px-2 py-1  text-xl  text-red-800 ">
+                                    {jsonRuns.sessionA}
+                                </Text>
+                            </View>
                             <Text className="px-2 py-1 text-xl  mx-2 bg-green-100  text-green-800 rounded-lg">
                                 {jsonRuns.sessionB}
                             </Text>
@@ -219,34 +229,34 @@ export const Live = React.memo(({ matchID }) => {
             </View>
         </ScrollView>
     );
-});
+};
 
 
 const styles = StyleSheet.create({
     container: {
-      borderBottomWidth: 2,
-      borderBottomColor:"gray",
-      padding:3,
-      marginBottom: 10,
+        borderBottomWidth: 2,
+        borderBottomColor: "gray",
+        padding: 3,
+        marginBottom: 10,
     },
     headerRow: {
-      flexDirection: 'row',
+        flexDirection: 'row',
     },
     dataRow: {
-      flexDirection: 'row',
+        flexDirection: 'row',
     },
     headerCell: {
-      flex: 1,
-      padding: 5,
-      fontWeight: 'bold',
+        flex: 1,
+        padding: 5,
+        fontWeight: 'bold',
     },
     dataCell: {
-      flex: 1,
-      padding: 5,
+        flex: 1,
+        padding: 5,
     },
     textRight: {
-      textAlign: 'right',
+        textAlign: 'right',
     },
-  });
+});
 
 

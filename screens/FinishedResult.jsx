@@ -26,7 +26,6 @@ export const FinishedResult = ({ navigation, route }) => {
             const matchId = parseInt(matchId);
             const filteredMatches = data.filter(it => it.MatchId === matchId);
             setMyMatch(filteredMatches[0]);
-            console.log(filteredMatches[0].jsondata);
             try {
                 if (filteredMatches[0].jsondata === "") {
                     filteredMatches[0].jsondata = "{}";
@@ -34,7 +33,6 @@ export const FinishedResult = ({ navigation, route }) => {
                 setJsonData(JSON.parse(filteredMatches[0].jsondata).jsondata);
                 const wicketA = jsonData?.wicketA;
                 setLoading(false);
-                console.log(wicketA);
             } catch (error) {
                 setLoading(false);
                 console.error('Error parsing JSON:', error.message);

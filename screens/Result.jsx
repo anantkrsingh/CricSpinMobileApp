@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Image, TouchableOpacity } from 'react-native';
 import { ActivityIndicator, Text, } from 'react-native-paper'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -25,12 +25,16 @@ import Info from '../components/Info';
 import { Live } from '../components/Live';
 import { ScoreCard } from '../components/Scorecard';
 import { MatchOdds } from '../components/MatchOdds';
+import { ResultsTab } from '../components/ResultsTab';
+import Tab2 from '../components/Tab2';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { MyContext } from '../ContextProvider';
 
 
 export const Result = ({ navigation, route }) => {
-  const { matchId } = route.params
-  const { myMatch, loading, jsonData, CRR, RRR, animation,speed } = useResult(route.params)
-  const [currentItem, setCurrentItem] = useState("Info");
+  const { loading, jsonData, CRR, RRR, animation, speed } = useResult()
+  const { match } = useContext(MyContext)
+  let myMatch = match
   const animationMap = {
     out,
     four,
@@ -46,31 +50,29 @@ export const Result = ({ navigation, route }) => {
     six,
     loadingLottie,
   };
-  const resultNavs = [
-    "Info", "Live", "Scorecard", "Matchodds"
-  ];
+
 
 
   return (
-    <SafeAreaView className="bg-gray-200 flex-1" >{
+
+    <View className="bg-[#5815db] mt-12 flex-1" >{
       loading ? <ActivityIndicator /> : <>
         <TopBar navigation={navigation} title={`${myMatch?.MatchType} ${myMatch?.TeamA} VS ${myMatch?.TeamB}`} />
-        <View style={{ flex: 1  }}>
+        <View style={{ flex: 1 }}>
           <View style={{ flex: 1, alignItems: 'center', overflow: 'hidden' }}>
-            <View style={{ backgroundColor: '#E5E7EB', position: 'fixed', left: 0, transitionDuration: '300ms', flexDirection: 'column', width: "100%", height: "100%" }}>
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 16 }}>
+            <View style={{ position: 'fixed', left: 0, transitionDuration: '300ms', flexDirection: 'column', width: "100%" }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text>{jsonData?.teamA}</Text>
+                  <Text style={{ color: "white", marginRight: 10 }}>{jsonData?.teamA}</Text>
                   <Image style={{ width: 48, height: 48, borderRadius: 24, marginRight: 8, borderWidth: 4 }} source={{ uri: `${IMAGEURL}${jsonData?.TeamABanner}` }} />
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Image style={{ width: 48, height: 48, borderRadius: 24, marginRight: 8, borderWidth: 4 }} source={{ uri: `${IMAGEURL}${jsonData?.TeamBBanner}` }} />
-                  <Text style={{ color: "black" }}>{jsonData?.teamB}</Text>
+                  <Text style={{ color: "white" }}>{jsonData?.teamB}</Text>
                 </View>
               </View>
 
-              <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 40, position: 'relative' }}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 15, position: 'relative' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', position: 'absolute', left: 0, right: 0, justifyContent: "center", backgroundColor: 'white', margin: 8, borderRadius: 8, }}>
                   <View style={{ padding: 8, width: "80%", overflow: "hidden" }}>
                     <Text>{jsonData?.wicketA}</Text>
@@ -90,7 +92,7 @@ export const Result = ({ navigation, route }) => {
                   )}
 
                   {animationMap[animation] && animation === 'loadingLottie' && (
-                    <Text style={{ position: "absolute", zIndex: 2, fontWeight: 'bold', fontSize: 14, height: "auto", width: 100, flex: 1, flexWrap: "wrap", flex: 1, flexShrink: 1, textAlign: "center" }}>
+                    <Text style={{ position: "absolute", zIndex: 2, fontWeight: 'bold', fontSize: 14, height: "auto", width: 100, flex: 1, flexWrap: "wrap", flex: 1, flexShrink: 1, textAlign: "center", color: "white" }}>
                       {jsonData?.score}
                     </Text>
                   )}
@@ -101,36 +103,15 @@ export const Result = ({ navigation, route }) => {
               </View>
 
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 16, marginTop: 20 }}>
-                <Text>CRR: {CRR}</Text>
-                <Text>RRR: {RRR}</Text>
+                <Text style={{ color: "white" }}>CRR: {CRR}</Text>
+                <Text style={{ color: "white" }}>RRR: {RRR}</Text>
               </View>
-              <View style={{ backgroundColor: '#F3F4F6', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', padding: 8,margin:10,borderRadius:10 }}>
-                {resultNavs.map((item) => (
-                  <TouchableOpacity style={{padding:10}} key={item} onPress={() => setCurrentItem(item)}>
-                    <Text style={{ fontWeight: currentItem === item ? 'bold' : 'normal', fontSize: 16, color: currentItem === item ? '#F59E0B' : '#333' }}>{item}</Text>
-                    {currentItem === item && <View style={{ backgroundColor: '#F59E0B', width: 'auto', height: 2 }} />}
-                  </TouchableOpacity>
-                ))}
-              </View>
-              {loading ? (
-                <Text>Loading...</Text>
-              ) : (
-                currentItem === 'Scorecard' ? (
-                  <ScoreCard matchID={matchId} />
-                ) : currentItem === 'Live' ? (
-                  <Live matchID={matchId} />
-                ) : currentItem === 'Matchodds' ? (
-                  <MatchOdds matchId={matchId} />
-                ) : (
-                  <Info match={myMatch} matchId={matchId} />
-                )
-              )}
             </View>
           </View>
         </View>
       </>
     }
+    </View>
 
-    </SafeAreaView>
   )
 }

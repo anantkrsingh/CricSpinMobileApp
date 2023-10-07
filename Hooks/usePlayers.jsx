@@ -7,7 +7,7 @@ const usePlayers = (matchID) => {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await fetch("https://api.cricspin.live/Players/?MatchId="+matchID, {
+        const response = await fetch("https://api.cricspin.live/Players/?MatchId=" + matchID, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -24,12 +24,12 @@ const usePlayers = (matchID) => {
 
     fetchPlayers();
 
-    const interval = setInterval(() => {
-      setLoading(false)
-      fetchPlayers();
-    }, 2000);
+    // const interval = setInterval(() => {
+    //   setLoading(false)
+    //   fetchPlayers();
+    // }, 2000);
 
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
   }, [matchID]);
 
   return { players, loading };

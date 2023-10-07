@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ActivityIndicator } from 'react-native-paper';
 
-import { Text, View, TouchableOpacity,ScrollView } from 'react-native'
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import { MatchOdd } from './MatchOdd';
+import { MyContext } from '../ContextProvider';
 
 
-export const MatchOdds = ({ matchId }) => {
-
+export const MatchOdds = () => {
+    const { matchId } = useContext(MyContext)
     const [match, setMatch] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        console.log(matchId, "From Odds");
         fetchData();
 
-        const interval = setInterval(() => {
-            fetchData();
-        }, 1000);
+        // const interval = setInterval(() => {
+        //     fetchData();
+        // }, 1000);
 
-        return () => clearInterval(interval);
-    }, []);
+        // return () => clearInterval(interval);
+    }, [matchId]);
     const fetchData = async () => {
         try {
             const response = await fetch(`https://api.cricspin.live/MatchOdds?MatchId=${matchId}`);
@@ -64,7 +66,7 @@ export const MatchOdds = ({ matchId }) => {
                 </View>
                 <ScrollView>
                     {showTeamAPlayers && (
-                        teamAPlayers.map((item,index) => {
+                        teamAPlayers.map((item, index) => {
                             return (
                                 <MatchOdd index={index} key={index} item={item} />
                             )
@@ -72,7 +74,7 @@ export const MatchOdds = ({ matchId }) => {
                     )}
                     {showTeamBPlayers && (
 
-                        teamBPlayers.map((item,index) => {
+                        teamBPlayers.map((item, index) => {
                             return (<MatchOdd index={index} key={index} item={item} />)
 
                         })

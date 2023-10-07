@@ -6,6 +6,7 @@ import { MyAppBar } from './AppBar';
 import { Result } from '../screens/Result';
 import { FinishedResult } from '../screens/FinishedResult';
 import { UpcomingResults } from '../screens/UpcomingResult';
+import { ResultHome } from '../screens/ResultHome';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,7 @@ export default function RootNavigator() {
                         ) : null,
                 })}
             >
-                <Stack.Screen name="Result" component={Result} />
+                <Stack.Screen name="Result" component={ResultHome} />
                 <Stack.Screen name="FinishedResult" component={FinishedResult} />
                 <Stack.Screen name="UpcomingResult" component={UpcomingResults} />
                 <Stack.Screen name="Dashboard" component={Dashboard} />

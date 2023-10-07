@@ -27,7 +27,6 @@ export const UpcomingMatches = ({ navigation }) => {
                         groupedMatches[date] = [];
                     }
                     match.position = index
-                    console.log(index);
                     groupedMatches[date].push(match);
                 });
                 return groupedMatches;

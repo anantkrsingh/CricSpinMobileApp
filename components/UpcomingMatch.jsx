@@ -5,7 +5,6 @@ import { TouchableOpacity } from 'react-native';
 const { width } = Dimensions.get('window');
 
 export const UpcomingMatch = ({ item, position, navigation }) => {
-    console.log(position,"position");
     return (
         <TouchableOpacity
             onPress={() => { navigation.navigate("UpcomingResult", { position: position }) }}
