@@ -10,7 +10,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 
     const translateX = position.interpolate({
         inputRange,
-        outputRange: inputRange.map(i => i * 60),
+        outputRange: inputRange.map(i => i * 100),
     });
     return (
         <View
@@ -59,7 +59,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                             onLongPress={onLongPress}
                             style={{ alignItems: "center" }}
                         >
-                            <Animated.Text style={{ color: isFocused ? "black" : "gray", width: 60, textAlign: "center", padding: 5 }}>
+                            <Animated.Text style={{ color: isFocused ? "black" : "gray", width: 100, textAlign: "center", padding: 5 }}>
                                 {label}
                             </Animated.Text>
                         </TouchableOpacity>
@@ -67,7 +67,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                 })}
             </View>
 
-            <Animated.View style={{ width: 60, height: 1, marginBottom: 5, backgroundColor: "black", transform: [{ translateX }] }}></Animated.View>
+            <Animated.View style={{ width: 100, height: 1, marginBottom: 5, backgroundColor: "black", transform: [{ translateX }] }}></Animated.View>
         </View>
     );
 }

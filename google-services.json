@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1035891794049",
+    "firebase_url": "https://cricspin-mobile-default-rtdb.firebaseio.com",
+    "project_id": "cricspin-mobile",
+    "storage_bucket": "cricspin-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035891794049:android:1af253e87e51620e6fad80",
+        "android_client_info": {
+          "package_name": "com.avssolution.fancylivecricketscore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7D-eS3NQXLl1JDqTaWbBj163JGvPDK_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

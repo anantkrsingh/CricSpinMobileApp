@@ -1,12 +1,17 @@
 import React, { useContext, useState } from 'react'
-import { Text, View, ScrollView, TouchableOpacity, ImageBackground,Linking } from 'react-native'
+import { Text, View, ScrollView, TouchableOpacity, ImageBackground, Linking, Image } from 'react-native'
 import { ActivityIndicator } from 'react-native-paper';
 import { Ionicons, Octicons } from '@expo/vector-icons';
+import { Dimensions } from 'react-native'
+import { MyContext } from '../ContextProvider';
 
 export const About = () => {
 
     const [aboutShown, setAboutShown] = useState(false)
     const [privacyShown, setprivacyShown] = useState(false)
+    const { bannerData } = useContext(MyContext)
+
+    const width = Dimensions.get("screen").width
     return (
         <ImageBackground className="flex-1" source={require('../assets/bg.png')}>
 
@@ -133,9 +138,12 @@ export const About = () => {
 
                         </View>
                     </TouchableOpacity>
-                    <View className='mt-4 mb-4'>
+                    <TouchableOpacity onPress={() => Linking.openURL(bannerData[1].url)} className={' mt-10 overflow-hidden mb-10'}>
+                        {
 
-                    </View>
+                            < Image resizeMode='stretch' style={{ width: width - 40, height: 270 }} source={{ uri: bannerData[1].image }} />
+                        }
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         </ImageBackground>

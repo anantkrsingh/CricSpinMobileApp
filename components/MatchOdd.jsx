@@ -29,8 +29,16 @@ export const MatchOdd = ({ item, index }) => {
                     <Text className='ml-2'>{item.favourite}</Text>
                 </View>
                 <View className='flex flex-row mr-4'>
-                    <Text className='px-2 text-center h-8 font-bold py-1 mx-2 bg-red-100 text-red-800 rounded-lg'>{item.MrateA}</Text>
-                    <Text className='px-2 h-8 font-bold py-1 bg-green-100  text-green-800 rounded-lg'>{item.MrateB}</Text>
+                    <View className='px-2 text-center h-8 font-bold py-1 mx-2 bg-red-100 text-red-800 rounded-lg items-center justify-center'>
+
+                        <Text className=' text-center font-bold   text-red-800 ' style={{ textAlign: "center" }}>{item.MrateA}</Text>
+                    </View>
+                    <View className='px-2 text-center h-8 font-bold py-1 mx-2 bg-green-100  rounded-lg items-center justify-center'>
+
+                        <Text className=' text-center font-bold   text-green-800 ' style={{ textAlign: "center" }}>{item.MrateB}</Text>
+
+                    </View>
+
                 </View>
             </View>
 

@@ -3,15 +3,20 @@ import { ScoreCard } from '../components/Scorecard';
 import { Live } from '../components/Live';
 import { MatchOdds } from '../components/MatchOdds';
 import { Text, View, SafeAreaView } from 'react-native'
+import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator } from 'react-native-paper';
 import { TopBar } from '../components/TopBar';
 import { TouchableOpacity } from 'react-native';
+import { Dimensions } from 'react-native'
+import { Ionicons, Octicons } from '@expo/vector-icons';
+import { BottomBanner } from '../components/BottomBanner';
+
 
 
 export const FinishedResult = ({ navigation, route }) => {
-
     const [currentItem, setCurrentItem] = useState("Scorecard");
     const { matchId, title } = route.params
+    console.log(route.params);
     const [loading, setLoading] = useState(true);
     const [myMatch, setMyMatch] = useState(null);
     const [jsonData, setJsonData] = useState(null)
@@ -53,40 +58,53 @@ export const FinishedResult = ({ navigation, route }) => {
 
     const ResultView = () => {
         switch (currentItem) {
-            case "Scorecard": return (<ScoreCard matchID={matchId} />);
+            case "Scorecard": return (<ScoreCard matchId={matchId} />);
             case "Live": return (<Live matchID={matchId} />);
             default: return (<MatchOdds matchId={matchId} />);
         }
     };
+    const screenWidth = Dimensions.get('window').width
+
 
     return (
-        <SafeAreaView className="bg-gray-200 flex-1" >{
-            loading ? <ActivityIndicator /> : <>
-                <TopBar navigation={navigation} title={title} />
-                <View className="  flex overflow-hidden">
-                    <View className="flex h-screen  bg-gray-200  flex-col w-[375px] m-0  transition-all duration-300 ease-in-out ">
-
-                        <View className='w-full bg-gray-100 self-center items-center justify-between mt-4 mb-2 px-4 flex flex-row '>
-                            {resultNavs.map((item) => {
-                                const selected = currentItem === item;
-                                return (
-                                    <TouchableOpacity onPress={() => { setCurrentItem(item) }} className={selected ? 'self-center p-4 cursor-pointer text-orange-800 font-bold' : 'text-gray-800 cursor-pointer'} key={item}>
-                                        <Text className={selected ? 'self-center cursor-pointer text-orange-800 font-bold' : 'text-gray-800 cursor-pointer'}>{item}</Text>
-                                    </TouchableOpacity>
-                                );
-                            })}
+        <>
+        
+            <StatusBar style='light' />
+            <View className="bg-gray-200 flex-1" >{
+                loading ? <ActivityIndicator style={{ marginTop: 30 }} /> : <>
+                    <View style={{}}>
+                        <View className="bg-[#2a076f] items-center p- 2 pt-14 pb-6 pl-4 flex flex-row color-white" style={{ width: screenWidth, alignContent: "center", alignSelf: "center" }}>
+                            <Ionicons onPress={() => { navigation.goBack() }} className="p-4" color={"white"} size={25} name="chevron-back-outline"></Ionicons>
+                            <Text className="ml-4 text-white font-semibold">{title} </Text>
                         </View>
-                        {loading ? (
-                            <Text>Loading...</Text>
-                        ) : (
-                            <ResultView />
-                        )}
                     </View>
-                </View>
-            </>
-        }
 
-        </SafeAreaView>
+                    <View className="  flex overflow-hidden">
+                        <View className="flex h-screen  bg-gray-200  flex-col m-0  transition-all duration-300 ease-in-out ">
+
+                            <View className='w-full bg-gray-100 self-center items-center justify-between mt-4 mb-2 px-4 flex flex-row '>
+                                {resultNavs.map((item) => {
+                                    const selected = currentItem === item;
+                                    return (
+                                        <TouchableOpacity onPress={() => { setCurrentItem(item) }} className={selected ? 'self-center p-4 cursor-pointer text-orange-800 font-bold' : 'text-gray-800 cursor-pointer'} key={item}>
+                                            <Text className={selected ? 'self-center cursor-pointer text-orange-800 font-bold' : 'text-gray-800 cursor-pointer'}>{item}</Text>
+                                        </TouchableOpacity>
+                                    );
+                                })}
+                            </View>
+                            {loading ? (
+                                <Text>Loading...</Text>
+                            ) : (
+                                <ResultView />
+                            )}
+                        </View>
+                    </View>
+                </>
+            }
+
+            </View>
+            <BottomBanner/>
+        </>
     );
 };
 

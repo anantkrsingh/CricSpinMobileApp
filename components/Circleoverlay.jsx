@@ -21,7 +21,7 @@ const CircleOverlay = () => {
           cx={80}
           cy={51.5}
           r={50}
-          stroke="#0093E9"
+          stroke="black"
           strokeWidth={3}
           fill="#6e2bf0"
           opacity={1}

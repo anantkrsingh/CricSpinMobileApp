@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, Image, Dimensions } from 'react-native'
 import { IMAGEURL } from './CONST';
 import { TouchableOpacity } from 'react-native';
+import { MyContext } from '../ContextProvider';
+import { Pressable } from 'react-native';
 const { width } = Dimensions.get('window');
 
 export const FinishedMatch = ({ item, position, navigation }) => {
+    const { setMatchId } = useContext(MyContext)
+
     return (
-        <TouchableOpacity onPress={() => { navigation.navigate("FinishedResult", { matchId: `${item.MatchId}`, title: `${item.Title}` }) }} style={{ width: width - 20 }} className='flex-1 bg-white mt-4 p-2 ps-4 rounded-xl justify-between flex flex-col'>
+        <Pressable onPress={() => { setMatchId(item.MatchId); navigation.navigate("FinishedResult", { matchId: `${item.MatchId}`, title: `${item.Title}` }) }} style={{ width: width - 20 }} className='bg-white mt-4 p-2 ps-4 rounded-xl justify-between flex flex-col overflow-hidden h-48'>
             <Text className='text-black text-[16px] euclid'>
                 {item.Title}
             </Text>
@@ -31,8 +35,8 @@ export const FinishedMatch = ({ item, position, navigation }) => {
                 </View>
             </View>
             <Text className='text-[#9d6003] euclidMedium text-[16px] mt-2'>
-                {item.result}
+                {item.Result}
             </Text>
-        </TouchableOpacity>
+        </Pressable>
     )
 }

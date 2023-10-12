@@ -1,13 +1,15 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import RenderHtml from 'react-native-render-html';
 import { useWindowDimensions } from 'react-native';
 import { MyContext } from "../ContextProvider";
+import { ExpandableBanner } from "./ExpandableBanner";
+
 
 
 export const Live = () => {
     const { matchId } = useContext(MyContext)
-    console.log(matchId,"From Live");
+    console.log(matchId, "From Live");
     const [match, setMatch] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -126,55 +128,74 @@ export const Live = () => {
                     <Text className="">Favourite</Text>
                     <View className="flex items-center font-bold flex-row">
                         <Text style={{ fontWeight: "bold" }}> {jsonRuns.fav}</Text>
-                        <View className=" mx-2 bg-red-100 rounded-lg">
-                            <Text className="text-red-800  px-2 text-xl py-1">
+                        <View className="text-center justify-center items-center mx-2 bg-red-100   rounded-lg">
+                            <Text className="text-base font-extrabold py-1 text-center px-4      text-red-800">
                                 {jsonRuns.rateA}
                             </Text>
                         </View>
                         <View className=" mx-2 bg-green-100 rounded-lg">
-                            <Text className="text-green-800  px-2 text-xl py-1">
-                                {jsonRuns.rateB}
-                            </Text>
+
+                            <View className="text-center justify-center items-center mx-2 bg-green-100   rounded-lg ">
+
+                                <Text className=" text-base font-extrabold py-1 text-center px-2 text-green-800">
+                                    {jsonRuns.rateB}
+                                </Text>
+                            </View>
                         </View>
                     </View>
                 </View>
                 <View className=" mb-2 euclid font-bold bg-white rounded-md mt-4 p-2 flex-row justify-between">
-                    <View className="flex flex-col items-center">
-                        <Text>Session </Text>
-                        <View className="flex flex-row">
-                            <View className="bg-red-100 rounded-lg mx-2">
+                    <View className="flex flex-col items-center justify-center ">
+                        <Text style={{ fontWeight: "bold" }}>Session </Text>
+                        <View className="flex flex-row justify-center mt-2">
+                            <View className="text-center justify-center items-center mx-2 bg-red-100   rounded-lg">
 
-                                <Text className="px-2 py-1  text-xl  text-red-800 ">
+                                <Text className="text-base font-extrabold text-center px-2 py-1 text-red-800 ">
                                     {jsonRuns.sessionA}
                                 </Text>
                             </View>
-                            <Text className="px-2 py-1 text-xl  mx-2 bg-green-100  text-green-800 rounded-lg">
-                                {jsonRuns.sessionB}
+                            <View className="text-center justify-center items-center mx-2 bg-green-100   rounded-lg ">
+
+                                <Text className=" text-base font-extrabold text-center px-2 text-green-800">
+                                    {jsonRuns.sessionB}
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View className="mb-2 flex items-center justify-center flex-col">
+                        <Text style={{ fontWeight: "bold" }}>Over</Text>
+                        <View className="text-center justify-center mt-2 items-center mx-2 bg-blue-100 rounded-lg ">
+                            <Text className=" text-base font-extrabold text-center px-2 py-1 text-blue-800">
+                                {jsonRuns.sessionOver}
                             </Text>
                         </View>
                     </View>
-                    <View className="mb-2 flex items-center flex-col">
-                        <Text>Over</Text>
-                        <Text className="px-2 text-xl py-1 mx-2 bg-green-100  text-green-800 rounded-2xl">
-                            {jsonRuns.sessionOver}
-                        </Text>
-                    </View>
                     <View className="flex flex-col mb-2 bg-white rounded-md">
-                        <Text className="text-center">Run x Ball</Text>
+                        <Text style={{
+                            fontWeight: "bold", padding
+                                : 4
+                        }} className="text-center">Run x Ball</Text>
                         <View className="flex flex-row justify-center">
-                            <Text className="px-2 text-xl py-1 mx-2 bg-red-100 text-red-800 rounded-lg">
-                                {jsonRuns.runxa}
-                            </Text>
-                            <Text className="px-2 text-xl py-1 mx-2 bg-green-100  text-green-800 rounded-lg ">
-                                {jsonRuns.runxb}
-                            </Text>
+
+                            <View className="text-center   justify-center items-center mx-2 bg-red-100   rounded-lg ">
+
+                                <Text className=" text-base font-extrabold text-center py-1 px-2 text-red-800">
+                                    {jsonRuns.runxa}
+                                </Text>
+                            </View>
+                            <View className="text-center justify-center items-center mx-2 bg-green-100   rounded-lg ">
+
+                                <Text className=" text-base font-extrabold text-center px-2 text-green-800">
+                                    {jsonRuns.runxb}
+                                </Text>
+                            </View>
                         </View>
                     </View>
                 </View>
                 <View className="bg-white rounded-xl  shadow-lg mt-2 mb-2 w-full">
                     <View style={styles.container}>
                         <View style={styles.headerRow}>
-                            <Text style={styles.headerCell}>Batsmen</Text>
+                            <Text style={styles.headerCellMain}>Batsmen</Text>
                             <Text style={[styles.headerCell, styles.textRight]}>R</Text>
                             <Text style={[styles.headerCell, styles.textRight]}>B</Text>
                             <Text style={[styles.headerCell, styles.textRight]}>4s</Text>
@@ -182,7 +203,7 @@ export const Live = () => {
                             <Text style={[styles.headerCell, styles.textRight]}>SR</Text>
                         </View>
                         <View style={styles.dataRow}>
-                            <Text style={styles.dataCell}>{data.batsman.split("|")[0].trim()}</Text>
+                            <Text style={styles.dataCellMain}>{data.batsman.split("|")[0].trim()}</Text>
                             <Text style={[styles.dataCell, styles.textRight]}>{data.oversB.split("|")[0].trim().split(",")[1].trim()}</Text>
                             <Text style={[styles.dataCell, styles.textRight]}>{data.oversB.split("|")[1].trim().split(",")[1].trim()}</Text>
                             <Text style={[styles.dataCell, styles.textRight]}>{data.s4}</Text>
@@ -190,7 +211,7 @@ export const Live = () => {
                             <Text style={[styles.dataCell, styles.textRight]}>{sr}</Text>
                         </View>
                         <View style={styles.dataRow}>
-                            <Text style={styles.dataCell}>{data.batsman.split("|")[1].trim()}</Text>
+                            <Text style={styles.dataCellMain}>{data.batsman.split("|")[1].trim()}</Text>
                             <Text style={[styles.dataCell, styles.textRight]}>{data.oversB.split("|")[0].trim().split(",")[0].trim()}</Text>
                             <Text style={[styles.dataCell, styles.textRight]}>{data.oversB.split("|")[1].trim().split(",")[0].trim()}</Text>
                             <Text style={[styles.dataCell, styles.textRight]}>{data.ns4}</Text>
@@ -207,7 +228,7 @@ export const Live = () => {
                         </Text>
                     </View>
                 </View>
-                {/* <ExpandableBanner /> */}
+                <ExpandableBanner />
                 <View className="flex euclid flex-row mt-2 mb-2 bg-white rounded-md p-1 items-center">
                     <Text>Last 6 Balls</Text>
 
@@ -224,7 +245,7 @@ export const Live = () => {
                     <Text className="p-2 text-lg">Summary</Text>
                     <View className="flex flex-1 h-[1px]  bg-gray-700">
                     </View>
-                    <Text className="text-lg items-center text-center">{content}</Text>
+                    <Text className="text-md items-center text-center">{content}</Text>
                 </View>
             </View>
         </ScrollView>
@@ -237,7 +258,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: "gray",
         padding: 3,
-        marginBottom: 10,
+        marginBottom: 0,
     },
     headerRow: {
         flexDirection: 'row',
@@ -246,12 +267,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     headerCell: {
-        flex: 1,
+        flex: .5,
+        padding: 5,
+        fontWeight: 'bold',
+    },
+    headerCellMain: {
+        flex: 2,
         padding: 5,
         fontWeight: 'bold',
     },
     dataCell: {
-        flex: 1,
+        flex: .5,
+        padding: 5,
+    },
+    dataCellMain: {
+        flex: 2,
         padding: 5,
     },
     textRight: {

@@ -3,14 +3,16 @@ import { View } from 'react-native'
 import { Result } from './Result'
 import { ResultsTab } from '../components/ResultsTab'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import { BottomBanner } from '../components/BottomBanner'
 
-export const ResultHome = ({navigation}) => {
+export const ResultHome = ({ navigation }) => {
   return (
     <BottomSheetModalProvider>
-        <View style={{flex:1}}>
-        <Result navigation={navigation}/>
+      <View style={{ flex: 1 }}>
+        <Result navigation={navigation} />
         <ResultsTab />
-        </View>
+        <BottomBanner />
+      </View>
     </BottomSheetModalProvider>
   )
 }

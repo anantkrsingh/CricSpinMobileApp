@@ -7,6 +7,9 @@ import { Result } from '../screens/Result';
 import { FinishedResult } from '../screens/FinishedResult';
 import { UpcomingResults } from '../screens/UpcomingResult';
 import { ResultHome } from '../screens/ResultHome';
+import { LiveMatches } from '../screens/LiveMatches';
+import { UpcomingMatchesScreen } from '../screens/UpcomingMatchesScreen';
+import { Series } from '../screens/Series';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +29,9 @@ export default function RootNavigator() {
                 <Stack.Screen name="FinishedResult" component={FinishedResult} />
                 <Stack.Screen name="UpcomingResult" component={UpcomingResults} />
                 <Stack.Screen name="Dashboard" component={Dashboard} />
+                <Stack.Screen name="LiveMatches" component={LiveMatches} />
+                <Stack.Screen name="UpcomingMatches" component={UpcomingMatchesScreen} />
+                <Stack.Screen name="SeriesDetails" component={Series} />
             </Stack.Navigator>
         </NavigationContainer>
     );

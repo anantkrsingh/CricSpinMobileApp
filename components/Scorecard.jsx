@@ -6,8 +6,8 @@ import usePlayers from '../Hooks/usePlayers';
 import { MyContext } from '../ContextProvider';
 
 export const ScoreCard = () => {
-    const {matchId} = useContext(MyContext)
-    console.log(matchId,"From Scorecard");
+    const { matchId } = useContext(MyContext)
+    console.log(matchId, "From Scorecard");
     const { players, loading } = usePlayers(matchId);
 
     const [showTeamAPlayers, setShowTeamAPlayers] = useState(true);
@@ -33,15 +33,17 @@ export const ScoreCard = () => {
     }
     return (
         <View className="w-full flex flex-col flex-1 justify-between">
-            <View className='fixed w-full  bottom-0 max-w-[320px] md:max-w-full md:left-0 self-center'>
+            <View className='fixed   bottom-0   self-center'>
                 {/* <BottomBanner /> */}
             </View>
             <View className='w-full p-4 flex-row mt-4 mb-2 flex justify-between euclidMedium text-sm '>
                 <TouchableOpacity onPress={toggleTeamAPlayers} className={showTeamAPlayers ? "bg-blue-100 text-blue-800 font-bold px-2 py-2 rounded-md" : "bg-white rounded-md px-2 py-2 cursor-pointer"}>
-                    <Text className="font-bold">{teamA} {teamAPlayers[0]?.TeamRuns}</Text>
+                    <Text className="font-bold">{teamA}</Text>
+                    <Text className="font-bold"> {teamAPlayers[0]?.TeamRuns})</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={toggleTeamBPlayers} className={showTeamBPlayers ? "bg-blue-100 text-blue-800 font-bold px-4 py-2 rounded-md" : "bg-white rounded-md px-4 py-2 cursor-pointer"}>
-                    <Text className="font-bold">{teamB} {teamBPlayers[0]?.TeamRuns}</Text>
+                    <Text className="font-bold">{teamB} </Text>
+                    <Text className="font-bold">{teamBPlayers[0]?.TeamRuns})</Text>
                 </TouchableOpacity>
             </View>
             <ScrollView className=' mb-10 p-2 '>

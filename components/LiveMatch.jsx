@@ -147,7 +147,7 @@ export const LiveMatch = ({ match, index, navigation }) => {
         <TouchableOpacity
             key={index}
             onPress={() => { setMatchId(match.MatchId); setSeriesId(match.seriesid); { navigation.navigate("Result") } }}
-            style={{ width: width - 20, marginTop: 2, borderRadius: 20, backgroundColor: "white", display: "flex", margin: 2, overflow: "hidden", flexDirection: "column", marginBottom: 0 }}
+            style={{ width: width - 20, marginTop: 4, borderRadius: 20, backgroundColor: "white", display: "flex", margin: 4, overflow: "hidden", flexDirection: "column", marginBottom: 4}}
         >
             <View style={{ display: "flex", justifyContent: "space-between", flexDirection: "row" }}  >
                 <Text style={{ padding: 8 }} >{match.Title}</Text>
@@ -159,7 +159,7 @@ export const LiveMatch = ({ match, index, navigation }) => {
                 <View className='flex flex-col p-4 justify-start items-start'>
                     <Image style={{ height: 48, width: 48, borderColor: "gray", borderWidth: 2, borderRadius: 40 }} source={{ uri: IMAGEURL + match?.TeamAImage }} className='teamLogo' alt="" />
                     <Text className=' font-bold text-start text-xl'>{isLive && match.Result === "" ? jsonData?.teamA : match.TeamA}</Text>
-                    <Text className='font-bold flex flex-row'>{jsonData?.wicketA}  <Text className='text-gray-400 ms-1'>({jsonData?.oversA})</Text> </Text>
+                    <Text className='font-bold flex flex-row'>{jsonData?.wicketA}  <Text className='text-gray-400 ms-1'> {jsonData?.oversA ?"(" :""} {jsonData?.oversA} {jsonData?.oversA ?")" :""}</Text> </Text>
                 </View>
                 <View className='w-[inherit] h-[100%] flex flex-1 text-center justify-center self-center'>
                     <Text className='text-red-500 text-center font-bold'>VS</Text>

@@ -8,7 +8,6 @@ export const UpcomingMatch = ({ item, position, navigation }) => {
     return (
         <TouchableOpacity
             onPress={() => { navigation.navigate("UpcomingResult", { position: position }) }}
-
             style={{ width: width - 20 }} className='flex-1 bg-white mt-4 p-2 ps-4 rounded-xl justify-between flex flex-col'>
             <Text className='text-black text-[16px] euclid'>
                 {item.Title}
@@ -17,18 +16,18 @@ export const UpcomingMatch = ({ item, position, navigation }) => {
                 <View className='flex flex-col flex-1'>
                     <View className='flex flex-row items-center mt-2'>
                         <Image source={{ uri: (IMAGEURL + item.TeamAImage) }} className='rounded-full border-2  w-[48px] h-[48px]' alt="" />
-                        <Text style={{ marginStart: 4 }} className=' euclid font-bold ms-4 text-[18px]'>{item.TeamA}</Text>
+                        <Text style={{ marginStart: 4 }} className=' euclid font-semibold ms-4 text-[18px]'>{item.TeamA}</Text>
                     </View>
                     <View className='flex flex-row items-center mt-4'>
                         <Image source={{ uri: (IMAGEURL + item.TeamBImage) }} className='rounded-full border-2  w-[48px] h-[48px]' alt="" />
-                        <Text style={{ marginStart: 4 }} className='euclid font-bold  text-[18px]'>{item.TeamB}</Text>
+                        <Text style={{ marginStart: 4 }} className='euclid font-semibold  text-[18px]'>{item.TeamB}</Text>
                     </View>
                 </View>
                 <View className='flex justify-between flex-row items-center'>
                     <View className='w-[1px] h-full bg-gray-400   m-2'>
 
                     </View>
-                    <Text className='ms-4 me-4 font-[Rajdhani] font-bold text-[#a50000]'>
+                    <Text className='ms-4 mr-4 font-[Rajdhani] font-semibold text-[#a50000]'>
                         Upcoming
                     </Text>
                 </View>
