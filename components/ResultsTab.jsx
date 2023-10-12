@@ -65,7 +65,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                             onLongPress={onLongPress}
                             style={{ alignItems: "center", width:width/4 }}
                         >
-                            <Animated.Text style={{ color: isFocused ? "white" : "lightgrey", textAlign: "center", padding: 10, borderRadius: 10, borderWidth: 0, overflow: "hidden", fontWeight: "semibold",  }}>
+                            <Animated.Text style={{ color: isFocused ? "white" : "lightgrey", textAlign: "center", padding: 10, borderRadius: 10, borderWidth: 0, overflow: "hidden", fontWeight: isFocused ? "bold": "semibold",  }}>
                                 {label}
                             </Animated.Text>
 
@@ -98,7 +98,7 @@ export const ResultsTab = () => {
             <Tab.Screen name='Live'  >
                 {props => <Live />}
             </Tab.Screen>
-            <Tab.Screen name='Scorecard' >
+            <Tab.Screen name='Score' >
                 {props => (<ScoreCard />)}
             </Tab.Screen>
             <Tab.Screen name='Odds'  >

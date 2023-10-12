@@ -5,20 +5,22 @@ import { View } from 'react-native';
 import { FlatList } from 'react-native';
 import { PlayerItem } from './PlayerItem';
 import { ActivityIndicator } from 'react-native';
+import { Text } from 'react-native-paper';
 
 export const TeamA = () => {
     const { matchId } = useContext(MyContext)
 
     const { players, loading } = usePlayers(matchId);
 
+
     return (
         <View style={{ flex: 1, backgroundColor: "white" }}>
-            {loading ? <ActivityIndicator /> : <FlatList
-                renderItem={PlayerItem}
-                keyExtractor={(item, index) => item.id }
-                numColumns={2}  
-                data={players.filter((player) => player.TeamSide === "Team B")}
-            />}
+        {loading ? <ActivityIndicator /> : <FlatList
+          renderItem={PlayerItem}
+          keyExtractor={(item, index) => item.id}
+          numColumns={2}
+          data={players.filter((player) => player.TeamSide === "Team A")}
+        />}
 
         </View>
     )

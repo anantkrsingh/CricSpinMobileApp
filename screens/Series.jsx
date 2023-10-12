@@ -40,7 +40,8 @@ export const Series = ({ navigation, route }) => {
 
     return (
         <>
-            <StatusBar style='light' />
+                        <StatusBar style='dark' backgroundColor='white' />
+
             <View className='flex h-screen bg-gray-200  flex-col m-0 transition-all duration-300 ease-in-out '>
                 <View style={{}}>
                     <View className="bg-[#2a076f] items-center p- 2 pt-14 pb-6 pl-4 flex flex-row color-white" style={{ width: screenWidth, alignContent: "center", alignSelf: "center" }}>

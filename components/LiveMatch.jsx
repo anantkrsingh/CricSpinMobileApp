@@ -157,7 +157,7 @@ export const LiveMatch = ({ match, index, navigation }) => {
             </View>
             <View style={{ display: "flex", flexDirection: "row", width: "100%" }} >
                 <View className='flex flex-col p-4 justify-start items-start'>
-                    <Image style={{ height: 48, width: 48, borderColor: "gray", borderWidth: 2, borderRadius: 40 }} source={{ uri: IMAGEURL + match?.TeamAImage }} className='teamLogo' alt="" />
+                    <Image style={{ height: 48, width: 48, borderColor: "black", borderWidth: 2, borderRadius: 40 }} source={{ uri: IMAGEURL + match?.TeamAImage }} className='teamLogo' alt="" />
                     <Text className=' font-bold text-start text-xl'>{isLive && match.Result === "" ? jsonData?.teamA : match.TeamA}</Text>
                     <Text className='font-bold flex flex-row'>{jsonData?.wicketA}  <Text className='text-gray-400 ms-1'> {jsonData?.oversA ?"(" :""} {jsonData?.oversA} {jsonData?.oversA ?")" :""}</Text> </Text>
                 </View>
@@ -165,7 +165,7 @@ export const LiveMatch = ({ match, index, navigation }) => {
                     <Text className='text-red-500 text-center font-bold'>VS</Text>
                 </View>
                 <View className='flex w-[inherit] flex-col p-4 items-end '>
-                    <Image style={{ height: 48, width: 48, borderColor: "gray", borderWidth: 2, borderRadius: 40 }} source={{ uri: IMAGEURL + match?.TeamBImage }} className='teamLogo' alt="" />
+                    <Image style={{ height: 48, width: 48, borderColor: "black", borderWidth: 2, borderRadius: 40 }} source={{ uri: IMAGEURL + match?.TeamBImage }} className='teamLogo' alt="" />
                     <Text className=' font-bold text-right text-xl'>{isLive && match.Result === "" ? jsonData?.teamB : match.TeamB}</Text>
                     <Text className='font-bold flex'>{jsonData?.wicketB}</Text>
                 </View>

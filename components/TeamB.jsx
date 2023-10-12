@@ -17,7 +17,7 @@ export const TeamB = () => {
           renderItem={PlayerItem}
           keyExtractor={(item, index) => item.id}
           numColumns={2}
-          data={players.filter((player) => player.TeamSide === "Team A")}
+          data={players.filter((player) => player.TeamSide === "Team B")}
         />}
 
 

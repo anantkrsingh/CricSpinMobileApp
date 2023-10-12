@@ -53,7 +53,7 @@ export const UpcomingResults = ({ route, navigation }) => {
     return (
         <>
 
-            <StatusBar style='light' />
+            <StatusBar style='dark' backgroundColor='white' />
             <SafeAreaView className="bg-gray-200 flex-1" >{
                 loading ? <ActivityIndicator /> : <>
                     <View className="bg-[#2a076f] items-center p- 2 pt-14 pb-6 pl-4 flex flex-row color-white" style={{ width: screenWidth, alignContent: "center", alignSelf: "center" }}>
@@ -64,21 +64,21 @@ export const UpcomingResults = ({ route, navigation }) => {
                     <View className="flex relative z-0 overflow-y-scroll p-4 bg-gray-200  flex-col m-0 
                     justify-center items-center transition-all duration-300 ease-in-out ">
 
-                        <View className='flex flex-row justify-between items-center  mt-2 overflow-hidden text-black p-2 w-full'>
+                        <View className='flex flex-row justify-between items-center  mt-2 overflow-hidden text-black p-1 w-full'>
                             <View className='flex flex-row items-center'>
                                 <Text>{myMatch?.TeamA}</Text>
-                                <Image className='rounded-full ml-3 mr-1 border-4  h-10 w-10 ' source={{ uri: `${IMAGEURL}${myMatch?.TeamAImage}` }} />
+                                <Image className='rounded-full ml-1 mr-1 border-4 py-2  h-8 w-8 ' source={{ uri: `${IMAGEURL}${myMatch?.TeamAImage}` }} />
                             </View>
-                            <View className='relative justify-center m-2 items-center flex'>
+                            <View className='relative justify-center m-1 items-center flex'>
 
-                                <View className=' rounded-lg rotate-[45deg] bg-blue-500 z-1 absolute h-10 w-10
+                                <View className=' rounded-lg rotate-[45deg] bg-blue-500 z-1 absolute h-8 w-8
                     justify-center items-center '>
 
                                 </View>
-                                <Text className=' absolute  text-white text-lg font-bold'>VS</Text>
+                                <Text className=' absolute text-white font-bold'>VS</Text>
                             </View>
                             <View className='flex flex-row items-center'>
-                                <Image className='rounded-full mr-1 border-4  h-10 w-10 ' source={{ uri: `${IMAGEURL}${myMatch?.TeamBImage}` }} />
+                                <Image className='rounded-full  border-4  h-8 w-8 ' source={{ uri: `${IMAGEURL}${myMatch?.TeamBImage}` }} />
                                 <Text>{myMatch?.TeamB}</Text>
                             </View>
 
