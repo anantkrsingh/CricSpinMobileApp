@@ -4,6 +4,7 @@ import { UpcomingMatch } from '../components/UpcomingMatch';
 import { ActivityIndicator } from 'react-native-paper';
 import { Dropdown } from 'react-native-element-dropdown';
 import { StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 export const UpcomingMatches = ({ navigation }) => {
     const [upcomingMatches, setUpcomingMatches] = useState([]);
@@ -69,6 +70,8 @@ export const UpcomingMatches = ({ navigation }) => {
                     <Text className='p-4 mt-2 text-white'>
                         Upcoming Matches
                     </Text>
+                    <StatusBar style='dark' backgroundColor='white' />
+
                     <View style={styles.container}>
                         <Dropdown
                             style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}

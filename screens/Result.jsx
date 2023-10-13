@@ -51,7 +51,8 @@ export const Result = ({ navigation, route }) => {
 
     <View className="bg-[#5815db] flex-0" >{
       loading ? <ActivityIndicator color='white' style={{ marginTop: 35 }} /> : <>
-        <StatusBar style='light' />
+                    <StatusBar style='dark' backgroundColor='white' />
+
         <View className="bg-[#2a076f] items-center p-4 pt-10 flex flex-row color-white" style={{ width: screenWidth, alignContent: "center", alignSelf: "center" }}>
           <Ionicons onPress={() => { navigation.goBack() }} className="p-4" color={"white"} size={25} name="chevron-back-outline"></Ionicons>
           <Text className="ml-4 text-white font-bold">{match.Title}</Text>

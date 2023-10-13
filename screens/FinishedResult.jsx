@@ -69,7 +69,8 @@ export const FinishedResult = ({ navigation, route }) => {
     return (
         <>
         
-            <StatusBar style='light' />
+                        <StatusBar style='dark' backgroundColor='white' />
+
             <View className="bg-gray-200 flex-1" >{
                 loading ? <ActivityIndicator style={{ marginTop: 30 }} /> : <>
                     <View style={{}}>
