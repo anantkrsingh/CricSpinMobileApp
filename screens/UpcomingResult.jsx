@@ -63,7 +63,6 @@ export const UpcomingResults = ({ route, navigation }) => {
                     <ScrollView>
                     <View className="flex relative z-0 overflow-y-scroll p-4 bg-gray-200  flex-col m-0 
                     justify-center items-center transition-all duration-300 ease-in-out ">
-
                         <View className='flex flex-row justify-between items-center  mt-2 overflow-hidden text-black p-1 w-full'>
                             <View className='flex flex-row items-center'>
                                 <Text>{myMatch?.TeamA}</Text>
@@ -85,18 +84,16 @@ export const UpcomingResults = ({ route, navigation }) => {
                         </View>
                         <View className='rounded-2xl mb-8 bg-white flex flex-col m-2 mt-4  overflow-hidden'>
                             <Text className='bg-blue-500 p-2 text-white euclidMedium text-lg'>Match Info </Text>
-
-                            <Text className=' p-2 '>{myMatch?.Result}</Text>
                             <View className='flex items-center p-4 flex-row '>
                                 <Ionicons name='tennisball-sharp' size={18} />
                                 <Text className='ml-2 '>{myMatch?.Title}</Text>
                             </View>
-                            <View className='flex flex-row items-center p-4'>
+                            <View className='flex flex-row items-center px-4'>
                                 <Ionicons name='calendar' size={18} />
                                 <Text className='ml-2 '>{myMatch?.Matchtime}</Text>
                             </View>
 
-                            <View className='flex flex-row items-center px-4'>
+                            <View className='flex flex-row items-center px-4 pt-4'>
                                 {myMatch?.Venue && <>
                                     <Ionicons name='location-sharp' size={18} />
                                     <Text className='ml-2 '>{myMatch?.Venue}</Text>

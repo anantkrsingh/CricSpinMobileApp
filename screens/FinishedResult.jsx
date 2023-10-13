@@ -81,7 +81,7 @@ export const FinishedResult = ({ navigation, route }) => {
 
                     <View className="flex h-full overflow-hidden">
                         <View className="bg-gray-200 h-full  flex-col m-0  transition-all duration-300 ease-in-out ">
-                            <View className='w-full bg-[#6D2BEF] self-center items-center justify-between mt-4 mb-2 px-4 flex flex-row '>
+                            <View className='w-full bg-[#6D2BEF] self-center items-center justify-between mb-2 px-4 flex flex-row '>
                                 {resultNavs.map((item) => {
                                     const selected = currentItem === item;
                                     return (

@@ -48,7 +48,9 @@ export const UpcomingMatches = ({ navigation }) => {
                 label: date,
                 value: date,
             }));
-            setItems(dropdownItems);
+
+            setItems([{ label: "Default", value: "Default" }, ...dropdownItems]);
+
             setMainList(groupedMatches)
             setLoading(false);
         } catch (error) {
@@ -58,9 +60,15 @@ export const UpcomingMatches = ({ navigation }) => {
     };
 
     const handleDropdownChange = (itemValue) => {
-        const filtered = mainList[itemValue.label] || [];
-        setFilteredMatches({ [itemValue.label]: filtered });
-        setValue(itemValue.label);
+        if (itemValue.label === "Default") {
+            setFilteredMatches(mainList)
+            setValue("Default")
+        } else {
+
+            const filtered = mainList[itemValue.label] || [];
+            setFilteredMatches({ [itemValue.label]: filtered });
+            setValue(itemValue.label);
+        }
     };
 
     return (
