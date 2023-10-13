@@ -78,7 +78,7 @@ export const Series = ({ navigation, route }) => {
                             </Text>
                         </Pressable>
                     </View>
-                    <View className='mt-4 pb-48  bottom-0  text-white '>
+                    <View className='mt-4 pb-40  bottom-0  text-white '>
                         {loading ?
                             (<Text>Loading...</Text>
 

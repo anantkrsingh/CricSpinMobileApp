@@ -32,55 +32,57 @@ export const ScoreCard = () => {
         return <Text>Loading...</Text>;
     }
     return (
-        <View className="w-full flex flex-col flex-1 justify-between">
-            <View className='fixed   bottom-0   self-center'>
-                {/* <BottomBanner /> */}
+        <ScrollView>
+            <View className="w-full justify-between">
+                <View className='w-full p-4 flex-row mt-4 mb-2 flex justify-between euclidMedium text-sm '>
+                    <TouchableOpacity onPress={toggleTeamAPlayers} className={showTeamAPlayers ? "bg-blue-100 text-blue-800 font-bold px-2 py-2 rounded-md" : "bg-white rounded-md px-2 py-2 cursor-pointer"}>
+                        <Text className="font-bold">{teamA}</Text>
+                        <Text className="font-bold"> {teamAPlayers[0]?.TeamRuns})</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={toggleTeamBPlayers} className={showTeamBPlayers ? "bg-blue-100 text-blue-800 font-bold px-4 py-2 rounded-md" : "bg-white rounded-md px-4 py-2 cursor-pointer"}>
+                        <Text className="font-bold">{teamB} </Text>
+                        <Text className="font-bold">{teamBPlayers[0]?.TeamRuns})</Text>
+                    </TouchableOpacity>
+                </View>
+                <ScrollView>
+                    {showTeamAPlayers && (
+                        <View style={styles.table}>
+                            <View style={styles.headerRow}>
+                                <Text className="text-black font-bold" style={styles.cell}>Batter</Text>
+                                <Text className="text-black  font-bold" style={[styles.subcell, styles.textRight]}>R</Text>
+                                <Text className="text-black  font-bold" style={[styles.subcell, styles.textRight]}>B</Text>
+                                <Text className="text-black  font-bold" style={[styles.subcell, styles.textRight]}>4s</Text>
+                                <Text className="text-black font-bold" style={[styles.subcell, styles.textRight]}>6s</Text>
+                            </View>
+                            <View style={styles.body}>
+                                {teamAPlayers.map((player) => (
+                                    <PlayerScoreCard key={player.seqno} player={player} />
+                                ))}
+                            </View>
+                        </View>
+                    )}
+                    {showTeamBPlayers && (
+                        <View style={styles.table}>
+                            <View style={styles.headerRow}>
+                                <Text style={styles.cell}>Batter</Text>
+                                <Text style={[styles.subcell, styles.textRight]}>R</Text>
+                                <Text style={[styles.subcell, styles.textRight]}>B</Text>
+                                <Text style={[styles.subcell, styles.textRight]}>4s</Text>
+                                <Text style={[styles.subcell, styles.textRight]}>6s</Text>
+                            </View>
+
+
+                            <View style={styles.body}>
+                                {teamBPlayers.map((player) => (
+                                    <PlayerScoreCard key={player.seqno} player={player} />
+                                ))}
+                            </View>
+
+                        </View>
+                    )}
+                </ScrollView>
             </View>
-            <View className='w-full p-4 flex-row mt-4 mb-2 flex justify-between euclidMedium text-sm '>
-                <TouchableOpacity onPress={toggleTeamAPlayers} className={showTeamAPlayers ? "bg-blue-100 text-blue-800 font-bold px-2 py-2 rounded-md" : "bg-white rounded-md px-2 py-2 cursor-pointer"}>
-                    <Text className="font-bold">{teamA}</Text>
-                    <Text className="font-bold"> {teamAPlayers[0]?.TeamRuns})</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={toggleTeamBPlayers} className={showTeamBPlayers ? "bg-blue-100 text-blue-800 font-bold px-4 py-2 rounded-md" : "bg-white rounded-md px-4 py-2 cursor-pointer"}>
-                    <Text className="font-bold">{teamB} </Text>
-                    <Text className="font-bold">{teamBPlayers[0]?.TeamRuns})</Text>
-                </TouchableOpacity>
-            </View>
-            <ScrollView className=' mb-10 p-2 '>
-                {showTeamAPlayers && (
-                    <View style={styles.table}>
-                        <View style={styles.headerRow}>
-                            <Text className="text-black font-bold" style={styles.cell}>Batter</Text>
-                            <Text className="text-black  font-bold" style={[styles.subcell, styles.textRight]}>R</Text>
-                            <Text className="text-black  font-bold" style={[styles.subcell, styles.textRight]}>B</Text>
-                            <Text className="text-black  font-bold" style={[styles.subcell, styles.textRight]}>4s</Text>
-                            <Text className="text-black font-bold" style={[styles.subcell, styles.textRight]}>6s</Text>
-                        </View>
-                        <View style={styles.body}>
-                            {teamAPlayers.map((player) => (
-                                <PlayerScoreCard key={player.seqno} player={player} />
-                            ))}
-                        </View>
-                    </View>
-                )}
-                {showTeamBPlayers && (
-                    <View style={styles.table}>
-                        <View style={styles.headerRow}>
-                            <Text style={styles.cell}>Batter</Text>
-                            <Text style={[styles.subcell, styles.textRight]}>R</Text>
-                            <Text style={[styles.subcell, styles.textRight]}>B</Text>
-                            <Text style={[styles.subcell, styles.textRight]}>4s</Text>
-                            <Text style={[styles.subcell, styles.textRight]}>6s</Text>
-                        </View>
-                        <View style={styles.body}>
-                            {teamBPlayers.map((player) => (
-                                <PlayerScoreCard key={player.seqno} player={player} />
-                            ))}
-                        </View>
-                    </View>
-                )}
-            </ScrollView>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -89,6 +91,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         padding: 2,
         borderRadius: 10,
+        margin: 10
 
     },
     headerRow: {
@@ -98,6 +101,7 @@ const styles = StyleSheet.create({
     },
     body: {
         marginTop: 5,
+        paddingBottom: 100
     },
     row: {
         flexDirection: 'row',

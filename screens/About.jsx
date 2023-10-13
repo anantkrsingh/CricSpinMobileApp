@@ -4,6 +4,8 @@ import { ActivityIndicator } from 'react-native-paper';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Dimensions } from 'react-native'
 import { MyContext } from '../ContextProvider';
+import * as Sharing from 'expo-sharing';
+
 
 export const About = () => {
 
@@ -108,9 +110,9 @@ export const About = () => {
 
 
 
-                    <TouchableOpacity onPress={() => Linking.openURL("mailto:alien01plays@gmail.com")} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
+                    <TouchableOpacity onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.avssolution.fancylivecricketscore")} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
                         <View className='flex justify-between flex-row p-2 items-center transition-all duration-150 ease-in-out '>
-                            <Text href="mailto:alien01plays@gmail.com">Advertise With US</Text>
+                            <Text href="mailto:alien01plays@gmail.com">Rate US</Text>
                             <Ionicons name='caret-forward-outline' />
 
                         </View>
@@ -123,9 +125,9 @@ export const About = () => {
                         </View>
                     </TouchableOpacity>
 
-                    <View onPress={() => Linking.openURL("https://play.google.com/store/apps/developer?id=CricSpin+Technologies")} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
+                    <View onPress={() => Sharing.shareAsync("https://play.google.com/store/apps/details?id=com.avssolution.fancylivecricketscore")} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
                         <View className='flex flex-row p-2 justify-between items-center transition-all duration-150 ease-in-out '>
-                            <Text href="https://play.google.com/store/apps/developer?id=CricSpin+Technologies">Apps</Text>
+                            <Text href="https://play.google.com/store/apps/developer?id=CricSpin+Technologies">Share our App</Text>
                             <Ionicons name='caret-forward-outline' />
 
                         </View>

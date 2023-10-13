@@ -12,7 +12,7 @@ export const UpcomingMatch = ({ item, position, navigation }) => {
             <Text className='text-black text-[16px] euclid'>
                 {item.Title}
             </Text>
-            <View className=' w-full justify-between flex-row flex-1'>
+            <View className='w-full justify-between flex-row flex-1'>
                 <View className='flex flex-col flex-1'>
                     <View className='flex flex-row items-center mt-2'>
                         <Image source={{ uri: (IMAGEURL + item.TeamAImage) }} className='rounded-full border-2  w-[48px] h-[48px]' alt="" />

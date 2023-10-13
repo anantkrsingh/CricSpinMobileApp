@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "stretch",
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
@@ -48,8 +48,8 @@
               ]
             }
           }
-        },
-        "projectId": "3fbeafff-96ba-47ce-93d3-d0594b87bd40"
+        }
+        
       }
     },
     "plugins": [

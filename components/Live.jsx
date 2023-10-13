@@ -192,7 +192,7 @@ export const Live = () => {
                         </View>
                     </View>
                 </View>
-                <View className="bg-white rounded-xl  shadow-lg mt-2 mb-2 w-full">
+                <View className="bg-white rounded-xl mt-2 mb-2 w-full">
                     <View style={styles.container}>
                         <View style={styles.headerRow}>
                             <Text style={styles.headerCellMain}>Batsmen</Text>

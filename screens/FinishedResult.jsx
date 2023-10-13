@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ScoreCard } from '../components/Scorecard';
 import { Live } from '../components/Live';
 import { MatchOdds } from '../components/MatchOdds';
-import { Text, View, SafeAreaView } from 'react-native'
+import { Text, View, SafeAreaView, ScrollView } from 'react-native'
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator } from 'react-native-paper';
 import { TopBar } from '../components/TopBar';
@@ -68,9 +68,8 @@ export const FinishedResult = ({ navigation, route }) => {
 
     return (
         <>
-        
-                        <StatusBar style='dark' backgroundColor='white' />
 
+            <StatusBar style='dark' backgroundColor='white' />
             <View className="bg-gray-200 flex-1" >{
                 loading ? <ActivityIndicator style={{ marginTop: 30 }} /> : <>
                     <View style={{}}>
@@ -80,31 +79,30 @@ export const FinishedResult = ({ navigation, route }) => {
                         </View>
                     </View>
 
-                    <View className="  flex overflow-hidden">
-                        <View className="flex h-screen  bg-gray-200  flex-col m-0  transition-all duration-300 ease-in-out ">
-
-                            <View className='w-full bg-gray-100 self-center items-center justify-between mt-4 mb-2 px-4 flex flex-row '>
+                    <View className="flex h-full overflow-hidden">
+                        <View className="bg-gray-200 h-full  flex-col m-0  transition-all duration-300 ease-in-out ">
+                            <View className='w-full bg-[#6D2BEF] self-center items-center justify-between mt-4 mb-2 px-4 flex flex-row '>
                                 {resultNavs.map((item) => {
                                     const selected = currentItem === item;
                                     return (
-                                        <TouchableOpacity onPress={() => { setCurrentItem(item) }} className={selected ? 'self-center p-4 cursor-pointer text-orange-800 font-bold' : 'text-gray-800 cursor-pointer'} key={item}>
-                                            <Text className={selected ? 'self-center cursor-pointer text-orange-800 font-bold' : 'text-gray-800 cursor-pointer'}>{item}</Text>
+                                        <TouchableOpacity onPress={() => { setCurrentItem(item) }} className={selected ? 'self-center p-4 cursor-pointer text-white font-bold' : 'text-gray cursor-pointer'} key={item}>
+                                            <Text className={selected ? 'self-center cursor-pointer text-white font-bold' : 'text-gray-300 cursor-pointer'}>{item}</Text>
                                         </TouchableOpacity>
                                     );
                                 })}
                             </View>
-                            {loading ? (
-                                <Text>Loading...</Text>
-                            ) : (
+                            <View style={{ flex: 1, height: "100%" }}>
+
                                 <ResultView />
-                            )}
+                            </View>
+
                         </View>
                     </View>
                 </>
             }
-
             </View>
-            <BottomBanner/>
+            <BottomBanner />
+
         </>
     );
 };
