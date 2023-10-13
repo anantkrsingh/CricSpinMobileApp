@@ -17,7 +17,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
     const width = Dimensions.get("screen").width
     const translateX = position.interpolate({
         inputRange,
-        outputRange: inputRange.map(i => i * width/4),
+        outputRange: inputRange.map(i => i * width / 4),
     });
     return (
         <View
@@ -63,9 +63,9 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                             testID={options.tabBarTestID}
                             onPress={onPress}
                             onLongPress={onLongPress}
-                            style={{ alignItems: "center", width:width/4 }}
+                            style={{ alignItems: "center", width: width / 4 }}
                         >
-                            <Animated.Text style={{ color: isFocused ? "white" : "lightgrey", textAlign: "center", padding: 10, borderRadius: 10, borderWidth: 0, overflow: "hidden", fontWeight: "semibold",  }}>
+                            <Animated.Text style={{ color: isFocused ? "white" : "lightgrey", textAlign: "center", padding: 10, borderRadius: 10, borderWidth: 0, overflow: "hidden", fontWeight: "semibold", }}>
                                 {label}
                             </Animated.Text>
 
@@ -73,7 +73,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                     );
                 })}
             </View>
-            <Animated.View style={{ width: width/4, height: 1, marginBottom: 5, backgroundColor: "red", transform: [{ translateX }] }}></Animated.View>
+            <Animated.View style={{ width: width / 4, height: 1, marginBottom: 5, backgroundColor: "red", transform: [{ translateX }] }}></Animated.View>
         </View>
     );
 }
@@ -81,7 +81,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 export const ResultsTab = () => {
     return (
         <Tab.Navigator
-            style={{marginTop: 0, padding: 0}}
+            // style={{  flex: 0 }}
             optimizationsEnabled={true}
             tabBar={props => <MyTabBar {...props} />}
             screenOptions={{
