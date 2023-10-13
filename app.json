@@ -2,7 +2,7 @@
   "expo": {
     "name": "CricSpin",
     "slug": "CricSpin",
-    "version": "1.0.0",
+    "version": "4.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
@@ -11,10 +11,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier":"com.avssolution.fancylivecricketscore"
+      "bundleIdentifier": "com.avssolution.fancylivecricketscore"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,8 +31,25 @@
     },
     "extra": {
       "eas": {
-        
-        "oneSignalAppId": "ff80ecf9-cf6a-4625-b51f-73e86bfac9d8"
+        "oneSignalAppId": "ff80ecf9-cf6a-4625-b51f-73e86bfac9d8",
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "OneSignalNotificationServiceExtension",
+                  "bundleIdentifier": "com.avssolution.fancylivecricketscore.OneSignalNotificationServiceExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.avssolution.fancylivecricketscore.onesignal"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "3fbeafff-96ba-47ce-93d3-d0594b87bd40"
       }
     },
     "plugins": [

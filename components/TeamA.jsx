@@ -6,7 +6,6 @@ import { FlatList } from 'react-native';
 import { PlayerItem } from './PlayerItem';
 import { ActivityIndicator } from 'react-native';
 import { Text } from 'react-native-paper';
-import { Text } from 'react-native-paper';
 
 export const TeamA = () => {
     const { matchId } = useContext(MyContext)
@@ -21,7 +20,7 @@ export const TeamA = () => {
                 numColumns={2}  
                 data={data}
             /> : <Text>Not Anounced</Text>)
-            
+
             }
 
         </View>
