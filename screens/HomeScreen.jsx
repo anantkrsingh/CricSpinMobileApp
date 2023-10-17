@@ -42,12 +42,13 @@ export const HomeScreen = ({ navigation }) => {
             </View>
             <View style={{ alignItems: "center" }}>
               {
-                !loading && <Carousel style={{ backgroundColor: "blue" }}
+                !loading && <Carousel  style={{ backgroundColor: "blue" }}
                   pagination={(data) => <PaginationDots key={""} totalPages={data.total} currentPage={data.currentPage} />}
                   renderItem={(item, index) => <LiveMatch key={index} match={item} index={index} navigation={navigation} />}
                   data={matches}
                   loop
                   autoplay
+                  autoplayInterval={5000}
                 />
               }
             </View>
