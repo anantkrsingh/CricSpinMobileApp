@@ -4,15 +4,33 @@ import { ActivityIndicator } from 'react-native-paper';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Dimensions } from 'react-native'
 import { MyContext } from '../ContextProvider';
-import * as Sharing from 'expo-sharing';
+import { Share } from 'react-native';
+
+
 
 
 export const About = () => {
 
     const [aboutShown, setAboutShown] = useState(false)
     const [privacyShown, setprivacyShown] = useState(false)
-    const { bannerData } = useContext(MyContext)
-
+    const { bannerData, telegram } = useContext(MyContext)
+    const url = 'https://play.google.com/store/apps/details?id=com.avssolution.fancylivecricketscore'
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message:
+                    ('CricSpin Fastest Cricket Live Line ' + '\n' + url)
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                } else {
+                }
+            } else if (result.action === Share.dismissedAction) {
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
     const width = Dimensions.get("screen").width
     return (
         <ImageBackground className="flex-1" source={require('../assets/bg.png')}>
@@ -117,21 +135,21 @@ export const About = () => {
 
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Linking.openURL("https://t.me/CricSpin")} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
+                    {telegram !== null && <TouchableOpacity onPress={() => Linking.openURL(telegram)} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
                         <View className='flex flex-row p-2 justify-between items-center transition-all duration-150 ease-in-out '>
                             <Text href="https://t.me/CricSpin">Telegram</Text>
                             <Ionicons name='caret-forward-outline' />
 
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
 
-                    <View onPress={() => Sharing.shareAsync("https://play.google.com/store/apps/details?id=com.avssolution.fancylivecricketscore")} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
+                    <TouchableOpacity onPress={onShare} className='bg-white mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
                         <View className='flex flex-row p-2 justify-between items-center transition-all duration-150 ease-in-out '>
                             <Text href="https://play.google.com/store/apps/developer?id=CricSpin+Technologies">Share our App</Text>
                             <Ionicons name='caret-forward-outline' />
 
                         </View>
-                    </View>
+                    </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => Linking.openURL('mailto:alwaysrank01@gmail.com')} className='bg-white mb-42 mt-4 rounded-xl p-2 transition-all duration-300 ease-in-out cursor-pointer'>
                         <View className='flex p-2 flex-row justify-between items-center transition-all duration-150 ease-in-out '>

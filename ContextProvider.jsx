@@ -11,20 +11,25 @@ export const ContextProvider = ({ children }) => {
     const [match, setMatch] = useState()
     const [seriesId, setSeriesId] = useState()
     const [bannerData, setBannerData] = useState()
+    const [notification, setNotification] = useState(null)
+    const [telegram,setTelegram] = useState(null)
 
     useEffect(() => {
         const query = ref(db, "data");
         return onValue(query, (snapshot) => {
             const data = snapshot.val();
             if (snapshot.exists()) {
-                console.log(data);
+                setNotification(data.notification);
                 setBannerData(data)
+                setTelegram(data?.telegram?.url)
             }
         });
     }, []);
 
+
+
     return (
-        <MyContext.Provider value={{ setMatchId, matchId, match, setMatch, seriesId, setSeriesId, bannerData }}>
+        <MyContext.Provider value={{ setMatchId, matchId, match, setMatch, seriesId, setSeriesId, bannerData,notification ,telegram}}>
             {children}
         </MyContext.Provider>
     )
