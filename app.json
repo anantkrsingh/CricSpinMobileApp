@@ -3,13 +3,12 @@
     "name": "CricSpin",
     "slug": "CricSpin",
     "version": "4.0",
-    
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "stretch",
+      "image": "./assets/splash.jpg",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
@@ -59,8 +58,7 @@
               ]
             }
           }
-        },
-        "projectId": "3fbeafff-96ba-47ce-93d3-d0594b87bd40"
+        }
       }
     },
     "plugins": [

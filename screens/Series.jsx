@@ -40,7 +40,7 @@ export const Series = ({ navigation, route }) => {
 
     return (
         <>
-                        <StatusBar style='dark' backgroundColor='white' />
+            <StatusBar style='dark' backgroundColor='white' />
 
             <View className='flex h-screen bg-gray-200  flex-col m-0 transition-all duration-300 ease-in-out '>
                 <View style={{}}>
@@ -94,7 +94,7 @@ export const Series = ({ navigation, route }) => {
 
                 </View>
             </View>
-            
+
         </>
     );
 };

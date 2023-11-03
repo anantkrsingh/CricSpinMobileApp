@@ -10,7 +10,7 @@ export const FinishedMatch = ({ item, position, navigation }) => {
     const { setMatchId } = useContext(MyContext)
 
     return (
-        <Pressable onPress={() => { setMatchId(item.MatchId); navigation.navigate("FinishedResult", { matchId: `${item.MatchId}`, title: `${item.Title}` }) }} style={{ width: width - 20 }} className='bg-white mt-4 p-2 ps-4 rounded-xl justify-between flex flex-col overflow-hidden h-48'>
+        <Pressable onPress={() => {  setMatchId(item.MatchId); item.Resut != "" ?  navigation.navigate("FinishedResult", { matchId: `${item.MatchId}`, title: `${item.Title}` }) : null }} style={{ width: width - 20 }} className='bg-white mt-4 p-2 ps-4 rounded-xl justify-between flex flex-col overflow-hidden h-48'>
             <Text className='text-black text-[16px] euclid'>
                 {item.Title}
             </Text>
@@ -30,7 +30,8 @@ export const FinishedMatch = ({ item, position, navigation }) => {
 
                     </View>
                     <Text className='ms-4 me-4 font-[Rajdhani] font-bold text-[#a50000]'>
-                        Finished
+                        {item.Result != ""? "Finished" :"Upcoming"}
+                        
                     </Text>
                 </View>
             </View>
